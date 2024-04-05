@@ -1,8 +1,41 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.container {
+  max-width: 1000px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.navbar-top {
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
+
+.header-link a {
+  font-size: 24pt;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.grey-font {
+  color: grey;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.navbar-top nav a {
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navbar-top nav a:not(:last-child):after {
+  padding: 8px;
+  color: #B2C2D0;
+  content: " ";
+}       
+
+.info {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

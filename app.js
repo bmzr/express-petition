@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const sequelize = require('./db');
+const Signature = require('./models/Signature');
 
 var indexRouter = require('./routes/index');
 var submittedRouter = require('./routes/submitted');
@@ -37,5 +39,21 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+async function setup() {
+  const test = await Signature.create(
+    { 
+      firstname: "BillyBob", 
+      lastname: "Jonathan", 
+      email: "BillyBobJ@emailsite.com" 
+    }
+  );
+  console.log("test instance created...")
+}
+
+sequelize.sync({ force: true }).then(()=>{
+  console.log("Sequelize Sync Completed...");
+  setup().then(()=> console.log("Signature setup complete"))
+})
 
 module.exports = app;

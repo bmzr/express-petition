@@ -1,3 +1,5 @@
+const Signature = require('../models/Signature');
+
 function appendAlert(message, type) {
     const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
     alertPlaceholder.innerHTML = '';
@@ -22,6 +24,14 @@ function validateEmail() {
     if (!valid) {
       appendAlert("Invalid email!", "danger");
     }
+    
+    // check if email is already in database
+    // const signature = await Signature.checkDuplicateEmail(email);
+    // if (signature) {
+    //     console.log("dupe email!!11");
+    //     appendAlert("Duplicate email!", "danger");
+    //     valid = false;
+    // }
     return valid;
   }
 

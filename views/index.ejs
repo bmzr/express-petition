@@ -69,11 +69,27 @@ By moving CPTS 489 to the evening, we aim to foster a more inclusive and accessi
                             </button>
                         </div>
                     </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="row"><%= signatures.length %> supporters</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for (signature of signatures) { %>
+                          <tr>
+                            <td><%= signature.firstname + ' ' + signature.lastname.charAt(0)%>.</td>
+                            <td class="text-right"><%= signature.createdAt%></td>
+                          </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
                 </div>
                 <div class="col-4">
-                    <form method="post" action="/" onsubmit="return validateForm()">
+                    <form method="post" action="/submitted" onsubmit="return validateForm()">
                         <fieldset>
                           <legend>Sign Petition</legend>
+                          <%- include('resultmsg') %>
                           <div id="liveAlertPlaceholder"></div>
                           <div>
                             <label for="firstname">First name</label>
